@@ -1,0 +1,25 @@
+[
+{
+    "request": "CHK islem dj",
+    "response": "GOOD",
+    "clientInfo": {
+        "protocol": "UDP",
+        "address": "127.0.0.1",
+        "port": 60724
+    },
+    "Request Time": "2025-01-06 03:03:36.303",
+    "timestamp": "1736129016306"
+}
+,
+{
+    "request": "CHK islem dj",
+    "response": "GOOD",
+    "clientInfo": {
+        "protocol": "UDP",
+        "address": "127.0.0.1",
+        "port": 60316
+    },
+    "Request Time": "2025-01-06 03:04:28.357",
+    "timestamp": "1736129068357"
+}
+]

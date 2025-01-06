@@ -1,0 +1,3 @@
+javac Version_1A/AuthServerUDP.java Version_1A.CheckerClientUDP.java Version_1A/common.ListeAuth.java
+java Version_1A.AuthServerUDP Version_1A/auth.txt
+java Version_1A/CheckerClientUDP islem dj

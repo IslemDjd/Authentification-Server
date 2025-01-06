@@ -1,0 +1,7 @@
+sidou:sd
+test:test
+adem:23
+baaziz:tp
+islem:dj
+patcho:patcho
+test1:test2

@@ -1,0 +1,3 @@
+javac Version_1B/AuthServerTCP.java Version_1B/CheckerClientTCP.java Version_1B/common.ListeAuth.java
+java Version_1B.AuthServerTCP Version_1B/auth.txt
+java Version_1B/CheckerClientTCP islem dj
