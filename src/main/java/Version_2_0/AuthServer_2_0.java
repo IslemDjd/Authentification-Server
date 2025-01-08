@@ -58,50 +58,6 @@ public class AuthServer_2_0 {
     }
 }
 
-//class UDPRequestHandler implements Runnable {
-//    private final DatagramSocket socket;
-//    private final DatagramPacket packet;
-//    private final ListeAuth auth;
-//
-//    public UDPRequestHandler(DatagramSocket socket, DatagramPacket packet, ListeAuth auth) {
-//        this.socket = socket;
-//        this.packet = packet;
-//        this.auth = auth;
-//    }
-//
-//    @Override
-//    public void run() {
-//        String request = new String(packet.getData(), 0, packet.getLength());
-//        String response = processRequest(request);
-//        try {
-//            byte[] responseData = response.getBytes();
-//            DatagramPacket responsePacket = new DatagramPacket(responseData, responseData.length, packet.getAddress(), packet.getPort());
-//            socket.send(responsePacket);
-//        } catch (IOException e) {
-//            System.err.println("Error sending UDP response: " + e.getMessage());
-//        }
-//    }
-//
-//    private String processRequest(String request) {
-//        String[] parts = request.split(" ");
-//        if (parts.length >= 3) {
-//            switch (parts[0]) {
-//                case "CHK":
-//                    return auth.checkAuth(parts[1], parts[2]) ? "GOOD" : "BAD";
-//                case "ADD":
-//                    return auth.addAuth(parts[1], parts[2]) ? "DONE" : "ERROR exists";
-//                case "DEL":
-//                    return auth.deleteAuth(parts[1], parts[2]) ? "DONE" : "ERROR invalid";
-//                case "MOD":
-//                    return auth.modifyAuth(parts[1], parts[2]) ? "DONE" : "ERROR not_found";
-//                default:
-//                    return "ERROR invalid_command";
-//            }
-//        }
-//        return "ERROR malformed_request";
-//    }
-//}
-
 class UDPRequestHandler implements Runnable {
     private final DatagramSocket socket;
     private final DatagramPacket packet;

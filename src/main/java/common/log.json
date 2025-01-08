@@ -46,4 +46,40 @@
     "Request Time": "2025-01-06 11:56:13.677",
     "timestamp": "1736160973677"
 }
+,
+{
+    "request": "CHK islem dj",
+    "response": "GOOD",
+    "clientInfo": {
+        "protocol": "TCP",
+        "address": "127.0.0.1",
+        "port": 57156
+    },
+    "Request Time": "2025-01-08 03:02:52.798",
+    "timestamp": "1736301772813"
+}
+,
+{
+    "request": "CHK islem dj",
+    "response": "GOOD",
+    "clientInfo": {
+        "protocol": "UDP",
+        "address": "127.0.0.1",
+        "port": 65253
+    },
+    "Request Time": "2025-01-08 03:02:56.520",
+    "timestamp": "1736301776520"
+}
+,
+{
+    "request": "ADD baaziz tp",
+    "response": "ERROR exists",
+    "clientInfo": {
+        "protocol": "TCP",
+        "address": "127.0.0.1",
+        "port": 57165
+    },
+    "Request Time": "2025-01-08 03:03:00.401",
+    "timestamp": "1736301780401"
+}
 ]

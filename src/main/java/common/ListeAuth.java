@@ -1,16 +1,39 @@
 package common;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListeAuth {
-    private Map<String, String> authPairs;
+    // Custom class to hold login-password pairs
+    private static class AuthPair {
+        private String login;
+        private String password;
+
+        public AuthPair(String login, String password) {
+            this.login = login;
+            this.password = password;
+        }
+
+        public String getLogin() {
+            return login;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+    }
+
+    private List<AuthPair> authPairs;
     private String filename;
 
     public ListeAuth(String filename) {
         this.filename = filename;
-        this.authPairs = new HashMap<>();
+        this.authPairs = new ArrayList<>();
         loadFromFile();
     }
 
@@ -20,7 +43,7 @@ public class ListeAuth {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(":");
                 if (parts.length == 2) {
-                    authPairs.put(parts[0], parts[1]);
+                    authPairs.add(new AuthPair(parts[0], parts[1]));
                 }
             }
         } catch (IOException e) {
@@ -30,8 +53,8 @@ public class ListeAuth {
 
     private void saveToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            for (Map.Entry<String, String> entry : authPairs.entrySet()) {
-                writer.write(entry.getKey() + ":" + entry.getValue());
+            for (AuthPair pair : authPairs) {
+                writer.write(pair.getLogin() + ":" + pair.getPassword());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -40,32 +63,43 @@ public class ListeAuth {
     }
 
     public boolean checkAuth(String login, String password) {
-        return authPairs.getOrDefault(login, "").equals(password);
-    }
-
-    public boolean addAuth(String login, String password) {
-        if (!authPairs.containsKey(login)) {
-            authPairs.put(login, password);
-            saveToFile();
-            return true;
+        for (AuthPair pair : authPairs) {
+            if (pair.getLogin().equals(login) && pair.getPassword().equals(password)) {
+                return true;
+            }
         }
         return false;
     }
 
+    public boolean addAuth(String login, String password) {
+        for (AuthPair pair : authPairs) {
+            if (pair.getLogin().equals(login)) {
+                return false; // Login already exists
+            }
+        }
+        authPairs.add(new AuthPair(login, password));
+        saveToFile();
+        return true;
+    }
+
     public boolean deleteAuth(String login, String password) {
-        if (checkAuth(login, password)) {
-            authPairs.remove(login);
-            saveToFile();
-            return true;
+        for (AuthPair pair : authPairs) {
+            if (pair.getLogin().equals(login) && pair.getPassword().equals(password)) {
+                authPairs.remove(pair);
+                saveToFile();
+                return true;
+            }
         }
         return false;
     }
 
     public boolean modifyAuth(String login, String newPassword) {
-        if (authPairs.containsKey(login)) {
-            authPairs.put(login, newPassword);
-            saveToFile();
-            return true;
+        for (AuthPair pair : authPairs) {
+            if (pair.getLogin().equals(login)) {
+                pair.setPassword(newPassword);
+                saveToFile();
+                return true;
+            }
         }
         return false;
     }
