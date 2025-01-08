@@ -22,4 +22,28 @@
     "Request Time": "2025-01-06 03:04:28.357",
     "timestamp": "1736129068357"
 }
+,
+{
+    "request": "CHK islem dj",
+    "response": "GOOD",
+    "clientInfo": {
+        "protocol": "TCP",
+        "address": "127.0.0.1",
+        "port": 54392
+    },
+    "Request Time": "2025-01-06 11:56:09.663",
+    "timestamp": "1736160969670"
+}
+,
+{
+    "request": "CHK islem dj",
+    "response": "GOOD",
+    "clientInfo": {
+        "protocol": "UDP",
+        "address": "127.0.0.1",
+        "port": 50843
+    },
+    "Request Time": "2025-01-06 11:56:13.677",
+    "timestamp": "1736160973677"
+}
 ]
